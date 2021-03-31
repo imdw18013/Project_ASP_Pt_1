@@ -1,0 +1,54 @@
+﻿@model IEnumerable<CompanyApp.Entities.Department>
+
+@{
+    ViewData["Title"] = "Department List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h4>Department List</h4>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Department</a>
+</p>
+<table class="table table-bordered table-hover table-striped table-checkbox dataTable no-footer">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit Department</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete Department</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
